@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khalid Kassou — AI Strategist & Software Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f2ec;
+    --gold: #c9933a;
+    --gold-light: #e8b96a;
+    --teal: #1a4a4a;
+    --teal-light: #2d6b6b;
+    --warm: #f0ebe0;
+    --muted: #6b6660;
+    --rule: rgba(10,10,15,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--teal);
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(201,147,58,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,147,58,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,242,236,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,242,236,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,147,58,0.15);
+    border: 1px solid rgba(201,147,58,0.4);
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 3px;
+    margin-bottom: 32px;
+    width: fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 900;
+    color: var(--paper);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero-name span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(245,242,236,0.65);
+    letter-spacing: 0.03em;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-title strong {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: rgba(245,242,236,0.88);
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 480px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.3s ease both;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 14px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(245,242,236,0.4);
+    color: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 14px 28px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 80px 80px 80px 40px;
+  }
+
+  .stats-card {
+    background: rgba(245,242,236,0.06);
+    border: 1px solid rgba(245,242,236,0.12);
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px;
+    backdrop-filter: blur(12px);
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .stats-card h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(245,242,236,0.08);
+  }
+  .stat-row:last-child { border-bottom: none; }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(245,242,236,0.6);
+  }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .stat-value span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--gold-light);
+    margin-left: 4px;
+    font-weight: 500;
+  }
+
+  .location-row {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(245,242,236,0.5);
+    font-size: 0.82rem;
+  }
+
+  .flag { font-size: 1.1rem; }
+
+  /* ─── SECTION COMMONS ─── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 600px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-left {}
+
+  .about-body {
+    font-size: 1rem;
+    color: #3a3530;
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+
+  .about-body strong { color: var(--teal); font-weight: 600; }
+
+  .about-right {}
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pillar {
+    background: var(--warm);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 24px 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .pillar:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .pillar-icon {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .pillar-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .pillar-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── SERVICES ─── */
+  .services {
+    background: var(--teal);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 70% at 100% 50%, rgba(201,147,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .services .section-title { color: var(--paper); }
+  .services .section-desc { color: rgba(245,242,236,0.6); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .service-card {
+    background: rgba(245,242,236,0.06);
+    border: 1px solid rgba(245,242,236,0.10);
+    border-radius: 8px;
+    padding: 36px 28px;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover {
+    background: rgba(245,242,236,0.10);
+    border-color: rgba(201,147,58,0.3);
+    transform: translateY(-4px);
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: rgba(245,242,236,0.6);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .service-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-light);
+    background: rgba(201,147,58,0.12);
+    border: 1px solid rgba(201,147,58,0.25);
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .experience {
+    background: var(--warm);
+  }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .exp-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 32px;
+    border-left: 3px solid var(--gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .exp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(10,10,15,0.08);
+  }
+
+  .exp-card.featured {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+    color: var(--paper);
+    border-left-color: var(--gold);
+  }
+
+  .exp-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .exp-card.featured .exp-org { color: var(--gold-light); }
+
+  .exp-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .exp-card.featured .exp-role { color: var(--paper); }
+
+  .exp-period {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .exp-card.featured .exp-period { color: rgba(245,242,236,0.55); }
+
+  .exp-desc {
+    font-size: 0.88rem;
+    color: #4a4540;
+    line-height: 1.7;
+  }
+
+  .exp-card.featured .exp-desc { color: rgba(245,242,236,0.75); }
+
+  .exp-highlights {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .exp-highlight {
+    font-size: 0.78rem;
+    background: rgba(201,147,58,0.12);
+    border: 1px solid rgba(201,147,58,0.2);
+    color: var(--gold);
+    padding: 4px 10px;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .exp-card.featured .exp-highlight {
+    background: rgba(201,147,58,0.2);
+    color: var(--gold-light);
+    border-color: rgba(201,147,58,0.35);
+  }
+
+  /* ─── PROJECTS ─── */
+  .projects {
+    background: var(--paper);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 32px 28px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+
+  .project-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(10,10,15,0.07);
+  }
+
+  .project-status {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .status-live {
+    background: rgba(34,197,94,0.1);
+    color: #16a34a;
+    border: 1px solid rgba(34,197,94,0.25);
+  }
+
+  .status-dev {
+    background: rgba(201,147,58,0.1);
+    color: var(--gold);
+    border: 1px solid rgba(201,147,58,0.25);
+  }
+
+  .project-emoji { font-size: 2rem; margin-bottom: 16px; }
+
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--teal);
+  }
+
+  .project-subtitle {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .project-desc {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ─── MOROCCO CTA ─── */
+  .morocco-cta {
+    background: linear-gradient(135deg, #1a0f00 0%, var(--teal) 100%);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .morocco-cta::before {
+    content: 'المغرب';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 18vw;
+    opacity: 0.04;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    color: var(--gold);
+  }
+
+  .morocco-cta .section-label { color: var(--gold-light); }
+  .morocco-cta .section-title { color: var(--paper); font-size: clamp(2.2rem, 4vw, 3.8rem); }
+
+  .cta-body {
+    font-size: 1.1rem;
+    color: rgba(245,242,236,0.65);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+  }
+
+  .cta-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-card {
+    background: rgba(245,242,236,0.07);
+    border: 1px solid rgba(201,147,58,0.25);
+    border-radius: 6px;
+    padding: 24px 28px;
+    text-align: left;
+    min-width: 200px;
+    max-width: 240px;
+  }
+
+  .cta-card-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .cta-card-title { font-weight: 600; color: var(--gold-light); font-size: 0.92rem; margin-bottom: 4px; }
+  .cta-card-sub { font-size: 0.78rem; color: rgba(245,242,236,0.5); }
+
+  .cta-section-title {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-section {
+    background: var(--warm);
+    padding-bottom: 80px;
+  }
+
+  .skills-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+
+  .skill-group {}
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skill-item {
+    font-size: 0.85rem;
+    color: #3a3530;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .skill-item::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── FOOTER / CONTACT ─── */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: start;
+    padding: 80px;
+  }
+
+  .contact-left {}
+
+  .contact-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 8px;
+  }
+
+  .contact-role {
+    color: var(--gold-light);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .contact-bio {
+    font-size: 0.9rem;
+    color: rgba(245,242,236,0.55);
+    line-height: 1.8;
+    max-width: 420px;
+  }
+
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: rgba(245,242,236,0.04);
+    border: 1px solid rgba(245,242,236,0.08);
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--paper);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    background: rgba(201,147,58,0.1);
+    border-color: rgba(201,147,58,0.35);
+  }
+
+  .cl-icon { font-size: 1.2rem; }
+  .cl-label { font-size: 0.78rem; color: rgba(245,242,236,0.45); font-family: 'DM Mono', monospace; letter-spacing: 0.08em; }
+  .cl-value { font-size: 0.9rem; color: var(--paper); font-weight: 500; }
+
+  .footer-bottom {
+    background: var(--ink);
+    border-top: 1px solid rgba(245,242,236,0.06);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(245,242,236,0.3);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .footer-flags {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 8px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 60px 32px; }
+    .hero-right { display: none; }
+    section { padding: 60px 32px; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-card.featured { grid-column: span 1; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-columns { grid-template-columns: 1fr 1fr; }
+    .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 32px; }
+    .footer-bottom { padding: 20px 32px; flex-direction: column; gap: 12px; text-align: center; }
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-left">
+    <div class="hero-tag">Available for Projects · Morocco & Global</div>
+    <h1 class="hero-name">Khalid<span>Kassou</span></h1>
+    <p class="hero-title">
+      <strong>AI Implementation Strategist</strong> &nbsp;·&nbsp; SaaS Architect &nbsp;·&nbsp; Software Educator
+    </p>
+    <p class="hero-tagline">
+      Bridging cutting-edge AI with Moroccan business reality — turning digital ambition into working software.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="#contact" class="btn-outline">Let's Talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-card">
+      <h3>At a Glance</h3>
+      <div class="stat-row">
+        <span class="stat-label">Teaching Experience</span>
+        <span class="stat-value">15 <span>yrs</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Products Built</span>
+        <span class="stat-value">5+ <span>apps</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Students Served (FY25)</span>
+        <span class="stat-value">856 <span>+</span></span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Languages</span>
+        <span class="stat-value" style="font-size:1rem; font-family: 'DM Sans', sans-serif; font-weight:600;">EN · FR · AR · Darija</span>
+      </div>
+      <div class="location-row">
+        <span class="flag">🇺🇸</span> New York (CUNY LaGuardia)
+        <span style="opacity:0.3; margin: 0 4px;">→</span>
+        <span class="flag">🇲🇦</span> Morocco
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about reveal">
+  <div class="about-left">
+    <p class="section-label">Who I Am</p>
+    <h2 class="section-title">Educator. Architect.<br>AI Strategist.</h2>
+    <div class="section-rule"></div>
+    <p class="about-body">
+      With <strong>15 years shaping the next generation of software engineers</strong> at LaGuardia Community College (CUNY), I've built a unique lens: I understand technology not just as code, but as <strong>transformation</strong>. I teach game programming, iOS development, data structures, and advanced C++ — while simultaneously building the AI-powered products I envision for Morocco's digital future.
+    </p>
+    <p class="about-body">
+      My background bridges <strong>academia and entrepreneurship</strong>. I hold a master's in Accounting & Finance alongside deep self-taught expertise in full-stack development, AI APIs, and SaaS architecture. This makes me rare: a builder who can explain complexity, and a teacher who builds real products.
+    </p>
+    <p class="about-body">
+      I'm the founder of <strong>The Render Report</strong> podcast and the developer behind CanFlow ERP, MoroccoLex, and Morocco's first AI-powered e-invoicing concept aligned with the DGI/Simpl-TVA mandate. My mission: <strong>accelerate Morocco's SME digital transformation through practical, beautiful software.</strong>
+    </p>
+  </div>
+  <div class="about-right">
+    <p class="section-label">Core Pillars</p>
+    <h3 class="section-title" style="font-size:1.5rem; margin-bottom:24px;">What Drives My Work</h3>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">🤖</div>
+        <div class="pillar-title">AI Integration</div>
+        <div class="pillar-desc">Embedding Claude, GPT, and custom AI agents into production business workflows</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🏗️</div>
+        <div class="pillar-title">SaaS Architecture</div>
+        <div class="pillar-desc">Full-stack web app and SaaS product design from MVP to scalable systems</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🇲🇦</div>
+        <div class="pillar-title">Moroccan Market</div>
+        <div class="pillar-desc">Deep understanding of Moroccan SME needs, regulatory context, and digital readiness</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎓</div>
+        <div class="pillar-title">Knowledge Transfer</div>
+        <div class="pillar-desc">Training, workshops, and team upskilling on AI tools and modern software practices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services reveal" id="services">
+  <p class="section-label">What I Build</p>
+  <h2 class="section-title" style="max-width:600px;">Full-Spectrum Digital Services for Moroccan Businesses</h2>
+  <div class="section-rule"></div>
+  <p class="section-desc">From intelligent ERP systems to AI-powered document platforms — I build production-grade software tailored to the Moroccan regulatory and commercial environment.</p>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01 / 06</div>
+      <div class="service-icon">🤖</div>
+      <div class="service-title">AI Implementation Strategy</div>
+      <div class="service-desc">I assess your business processes, identify AI leverage points, and implement Claude/GPT-powered automation that delivers measurable ROI — without the hype.</div>
+      <div class="service-tags">
+        <span class="service-tag">Process Audit</span>
+        <span class="service-tag">Claude API</span>
+        <span class="service-tag">Automation</span>
+        <span class="service-tag">ROI Roadmap</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02 / 06</div>
+      <div class="service-icon">🌐</div>
+      <div class="service-title">Web App Development</div>
+      <div class="service-desc">Custom web applications built for the Moroccan market — multilingual (FR/AR/Darija), mobile-first, and designed to scale from 10 to 10,000 users.</div>
+      <div class="service-tags">
+        <span class="service-tag">React / SwiftUI</span>
+        <span class="service-tag">REST APIs</span>
+        <span class="service-tag">Multilingual UI</span>
+        <span class="service-tag">Mobile-First</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03 / 06</div>
+      <div class="service-icon">📦</div>
+      <div class="service-title">SaaS Product Development</div>
+      <div class="service-desc">End-to-end SaaS product design and development: architecture, MVP build, subscription billing, and go-to-market support for the MENA region.</div>
+      <div class="service-tags">
+        <span class="service-tag">MVP → Scale</span>
+        <span class="service-tag">B2B SaaS</span>
+        <span class="service-tag">Subscription Logic</span>
+        <span class="service-tag">MENA GTM</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04 / 06</div>
+      <div class="service-icon">🧠</div>
+      <div class="service-title">MaaS — Models as a Service</div>
+      <div class="service-desc">Deploy custom AI models as API services for your business: document intelligence, Arabic OCR, legal entity extraction, invoice automation, and more.</div>
+      <div class="service-tags">
+        <span class="service-tag">Custom LLM APIs</span>
+        <span class="service-tag">Arabic OCR</span>
+        <span class="service-tag">Doc Intelligence</span>
+        <span class="service-tag">Invoice AI</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05 / 06</div>
+      <div class="service-icon">🧾</div>
+      <div class="service-title">DGI / Simpl-TVA E-Invoicing</div>
+      <div class="service-desc">Morocco's e-invoicing mandate is coming. I build compliant, AI-powered invoicing platforms integrated with DGI's Simpl-TVA system — ahead of the 2026 rollout.</div>
+      <div class="service-tags">
+        <span class="service-tag">DGI Compliance</span>
+        <span class="service-tag">Simpl-TVA</span>
+        <span class="service-tag">E-Facture</span>
+        <span class="service-tag">ERP Integration</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06 / 06</div>
+      <div class="service-icon">🏭</div>
+      <div class="service-title">Custom ERP Systems</div>
+      <div class="service-desc">Industry-specific ERP modules for Moroccan SMEs — from fishery conserveries to retail chains. Built in French, designed for your ops team, not enterprise IT.</div>
+      <div class="service-tags">
+        <span class="service-tag">Achats / Stock</span>
+        <span class="service-tag">Production</span>
+        <span class="service-tag">Facturation</span>
+        <span class="service-tag">French UI</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section class="experience reveal">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've Built & Taught</h2>
+  <div class="section-rule"></div>
+
+  <div class="exp-grid">
+
+    <div class="exp-card featured">
+      <div class="exp-org">LaGuardia Community College · CUNY</div>
+      <div class="exp-role">Lecturer, Programming & Software Development</div>
+      <div class="exp-period">2010 – Present · New York, NY</div>
+      <div class="exp-desc">Full-time lecturer in the Mathematics, Engineering & Computer Science department. I design and teach courses in game programming (Unity/C#), iOS development (SwiftUI), data structures (Java), advanced C++, database concepts, and statistics. Spearheaded AI integration initiatives including the AI-Enhanced Mathematics Tutoring Lab, securing $25K in CUNY AI Innovation Fund grants.</div>
+      <div class="exp-highlights">
+        <span class="exp-highlight">856 students served FY25</span>
+        <span class="exp-highlight">$25K grant secured</span>
+        <span class="exp-highlight">6 courses taught</span>
+        <span class="exp-highlight">AI curriculum pioneer</span>
+        <span class="exp-highlight">PPR program review lead</span>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-org">Independent · Morocco Tech</div>
+      <div class="exp-role">AI Implementation Consultant</div>
+      <div class="exp-period">2023 – Present · Remote</div>
+      <div class="exp-desc">Advising Moroccan SMEs on AI adoption strategy, digital transformation, and software architecture. Building products targeting Morocco's regulatory landscape including DGI e-invoicing and legal document automation.</div>
+      <div class="exp-highlights">
+        <span class="exp-highlight">MoroccoLex</span>
+        <span class="exp-highlight">CanFlow ERP</span>
+        <span class="exp-highlight">E-Invoicing Platform</span>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-org">The Render Report · Podcast</div>
+      <div class="exp-role">Host & Producer</div>
+      <div class="exp-period">2024 – Present · Bilingual AR/FR/EN</div>
+      <div class="exp-desc">Solo podcast bridging global AI developments with Moroccan SME realities. Episodes cover AI tools, digital transformation strategies, and practical implementation guidance for Moroccan entrepreneurs.</div>
+      <div class="exp-highlights">
+        <span class="exp-highlight">Bilingual AR/FR/EN</span>
+        <span class="exp-highlight">Moroccan SME Focus</span>
+        <span class="exp-highlight">AI Trends</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section class="projects reveal">
+  <p class="section-label">Signature Projects</p>
+  <h2 class="section-title">Products Built for Morocco's Digital Future</h2>
+  <div class="section-rule"></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-status status-dev">In Development</span>
+      <div class="project-emoji">🐟</div>
+      <div class="project-name">CanFlow ERP</div>
+      <div class="project-subtitle">French-Language ERP · Conserverie</div>
+      <div class="project-desc">Custom ERP for Moroccan fish canning operations. Modules: Achats, Stock, Production, Ventes, Facturation, Tiers, Rapports. Designed for non-technical operations staff in French.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-status status-dev">MVP Ready</span>
+      <div class="project-emoji">🧾</div>
+      <div class="project-name">AI E-Invoicing Platform</div>
+      <div class="project-subtitle">DGI / Simpl-TVA · Morocco 2026</div>
+      <div class="project-desc">Morocco's first AI-powered e-invoicing SaaS aligned with the DGI mandate. Automated invoice generation, validation, and submission — built ahead of the compliance deadline.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-status status-live">Deployed</span>
+      <div class="project-emoji">⚖️</div>
+      <div class="project-name">MoroccoLex</div>
+      <div class="project-subtitle">AI Legal Document Processing</div>
+      <div class="project-desc">AI-powered document platform for Moroccan law firms. Arabic/French/Darija OCR, legal entity extraction, folder-watcher auto-processing, and multilingual document pipelines.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-status status-live">Deployed</span>
+      <div class="project-emoji">🧮</div>
+      <div class="project-name">MathMind AI</div>
+      <div class="project-subtitle">Socratic Math Tutor · CUNY</div>
+      <div class="project-desc">AI tutoring platform using Claude API with Socratic dialogue, CUNY ID integration, faculty dashboards, and Perkins grant reporting support. Serves MAT115/120/200 students.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-status status-live">Deployed</span>
+      <div class="project-emoji">📻</div>
+      <div class="project-name">The Render Report</div>
+      <div class="project-subtitle">AI Podcast · Moroccan SMEs</div>
+      <div class="project-desc">Bilingual tech podcast (AR/FR/EN) translating global AI trends into actionable guidance for Moroccan entrepreneurs and SME owners navigating digital transformation.</div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-status status-live">Active</span>
+      <div class="project-emoji">🎓</div>
+      <div class="project-name">Interactive Course Platform</div>
+      <div class="project-subtitle">CUNY · 6 Courses</div>
+      <div class="project-desc">Comprehensive single-file HTML interactive presentations, auto-graded labs, and simulators for Unity, SwiftUI, C++, Java Data Structures, and Statistics — serving 500+ students annually.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── MOROCCO CTA ─── -->
+<section class="morocco-cta reveal">
+  <p class="section-label cta-section-title">Pour les Entreprises Marocaines</p>
+  <h2 class="section-title cta-section-title">Votre Partenaire Tech<br>au Maroc</h2>
+  <div class="section-rule" style="margin: 0 auto 32px;"></div>
+  <p class="cta-body">
+    Que vous soyez une PME cherchant à automatiser vos processus, une startup avec une idée SaaS, ou une entreprise devant se conformer à la nouvelle réglementation DGI — je transforme votre vision en logiciel qui fonctionne vraiment, dans votre langue, dans votre contexte.
+  </p>
+  <div class="cta-cards">
+    <div class="cta-card">
+      <div class="cta-card-icon">🏢</div>
+      <div class="cta-card-title">PME & Startups</div>
+      <div class="cta-card-sub">ERP, SaaS, automatisation IA</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-icon">⚖️</div>
+      <div class="cta-card-title">Cabinets Juridiques</div>
+      <div class="cta-card-sub">Traitement doc AR/FR, OCR, extraction</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-icon">🧾</div>
+      <div class="cta-card-title">Facturation DGI</div>
+      <div class="cta-card-sub">Conformité Simpl-TVA 2026</div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-icon">🤝</div>
+      <div class="cta-card-title">Consulting IA</div>
+      <div class="cta-card-sub">Stratégie, formation, implémentation</div>
+    </div>
+  </div>
+  <div class="cta-actions">
+    <a href="#contact" class="btn-primary">Démarrer un Projet</a>
+    <a href="#services" class="btn-outline">Voir les Services</a>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section class="skills-section reveal">
+  <p class="section-label">Technical Stack</p>
+  <h2 class="section-title">Tools & Technologies</h2>
+  <div class="section-rule"></div>
+  <div class="skills-columns">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <ul class="skill-list">
+        <li class="skill-item">JavaScript / TypeScript</li>
+        <li class="skill-item">Python</li>
+        <li class="skill-item">Swift / SwiftUI</li>
+        <li class="skill-item">Java</li>
+        <li class="skill-item">C / C++</li>
+        <li class="skill-item">SQL</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI & APIs</div>
+      <ul class="skill-list">
+        <li class="skill-item">Anthropic Claude API</li>
+        <li class="skill-item">OpenAI GPT</li>
+        <li class="skill-item">LLM Prompt Engineering</li>
+        <li class="skill-item">AI Agent Workflows</li>
+        <li class="skill-item">Arabic OCR / NLP</li>
+        <li class="skill-item">RAG Pipelines</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Platforms & Tools</div>
+      <ul class="skill-list">
+        <li class="skill-item">React / Node.js</li>
+        <li class="skill-item">Unity (C#)</li>
+        <li class="skill-item">Xcode / iOS</li>
+        <li class="skill-item">PostgreSQL / MySQL</li>
+        <li class="skill-item">REST API Design</li>
+        <li class="skill-item">Git / GitHub</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Domain Expertise</div>
+      <ul class="skill-list">
+        <li class="skill-item">ERP Architecture</li>
+        <li class="skill-item">SaaS Business Models</li>
+        <li class="skill-item">DGI / Tax Compliance</li>
+        <li class="skill-item">Moroccan Market</li>
+        <li class="skill-item">EdTech & Curriculum</li>
+        <li class="skill-item">Grant Writing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact reveal" id="contact">
+  <div class="contact-left">
+    <div class="contact-name">Khalid Kassou</div>
+    <div class="contact-role">AI Strategist · SaaS Architect · Software Educator</div>
+    <p class="contact-bio">
+      Available for consulting engagements, SaaS co-development partnerships, and AI implementation projects across Morocco and MENA. Response time: 24–48 hours. All project conversations held in French, Arabic, or English — your choice.
+    </p>
+  </div>
+  <div class="contact-right">
+    <a href="https://linkedin.com/in/khalid-kassou-2627744b" target="_blank" class="contact-link">
+      <span class="cl-icon">💼</span>
+      <div>
+        <div class="cl-label">LinkedIn</div>
+        <div class="cl-value">linkedin.com/in/khalid-kassou</div>
+      </div>
+    </a>
+    <a href="#" class="contact-link">
+      <span class="cl-icon">🎙️</span>
+      <div>
+        <div class="cl-label">Podcast</div>
+        <div class="cl-value">The Render Report</div>
+      </div>
+    </a>
+    <a href="#" class="contact-link">
+      <span class="cl-icon">🏫</span>
+      <div>
+        <div class="cl-label">Academic</div>
+        <div class="cl-value">LaGuardia Community College · CUNY</div>
+      </div>
+    </a>
+    <a href="mailto:contact@khalidkassou.com" class="contact-link">
+      <span class="cl-icon">✉️</span>
+      <div>
+        <div class="cl-label">Email</div>
+        <div class="cl-value">contact@khalidkassou.com</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<div class="footer-bottom">
+  <span class="footer-copy">© 2026 Khalid Kassou · AI Strategist & Software Architect</span>
+  <div class="footer-flags">🇺🇸 🤝 🇲🇦</div>
+</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
